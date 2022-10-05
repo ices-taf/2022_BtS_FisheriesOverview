@@ -1,7 +1,5 @@
 library(icesVMS)
 
-library("icesVMS")
-
 vms_effort <- icesVMS::get_effort_map("Baltic Sea")
 
 # convert to sf

@@ -1,5 +1,5 @@
 library(icesTAF)
-taf.library(icesFO)
+library(icesFO)
 
 areas <- icesFO::load_areas("Baltic Sea")
 
