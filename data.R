@@ -111,7 +111,8 @@ unique(clean_sag$StockKeyLabel)
 
 
 # remove some stocks
-Baltic_Out_stocks <-  c("sal.27.32", "sal.27.22-31", "ele.2737.nea", "trs.27.22-32", "fle.27.2425")
+Baltic_Out_stocks <-  c("sal.27.32", "sal.27.22-31", "ele.2737.nea", "trs.27.22-32", "fle.27.2425",
+                        "bwq.27.2425","bwq.27.2628")
 clean_sag <- dplyr::filter(clean_sag, !StockKeyLabel %in% Baltic_Out_stocks)
 #pending
 clean_status <- dplyr::filter(clean_status, !StockKeyLabel %in% Baltic_Out_stocks)

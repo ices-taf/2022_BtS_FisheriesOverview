@@ -5,7 +5,7 @@ library(dplyr)
 
 out <- load_sag(2022, "Baltic Sea")
 
-
+sag_complete <- out
 write.taf(out, file = "SAG_complete_BtS.csv", quote = TRUE)
 
 
