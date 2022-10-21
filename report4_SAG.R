@@ -202,23 +202,39 @@ dev.off()
 #~~~~~~~~~~~~~~~#
 
 # adri review function, missing caption
+catch_trends <- unique(catch_trends)
+catch_trends$ID <- paste0(catch_trends$Year,catch_trends$StockKeyLabel,catch_trends$FisheriesGuild)
+check <- catch_trends %>% arrange(rowSums(is.na(.))) %>% distinct(ID, .keep_all = TRUE)
+catch_trends <- check
+
 discardsA <- plot_discard_trends(catch_trends, year, cap_year, cap_month )
 
 dat <- plot_discard_trends(catch_trends, year, cap_year , cap_month , return_data = TRUE)
+# dat2 <- plot_discard_trends(catch_trends2, year, cap_year , cap_month , return_data = TRUE)
+
 write.taf(dat, file =file_name(cap_year,ecoreg_code,"SAG_Discards_trends", ext = "csv"), dir = "report" )
 
 catch_trends2 <- catch_trends %>% filter(Discards > 0)
+df5 <- catch_trends2
 # df5 <- df %>% filter(Discards >0)
-discardsB <- plot_discard_current(catch_trends2, year,position_letter = "b)", cap_year , cap_month , caption = FALSE)
+discardsB <- plot
+# discardsB <- plot_discard_current(catch_trends2, year,position_letter = "b)", cap_year , cap_month , caption = FALSE)
 
-discardsC <- plot_discard_current(catch_trends, year,position_letter = "c)", cap_year , cap_month , caption = TRUE )
+# catch_trends <- unique(catch_trends)
+# catch_trends$ID <- paste0(catch_trends$Year,catch_trends$StockKeyLabel,catch_trends$FisheriesGuild)
+# check <- catch_trends %>% arrange(rowSums(is.na(.))) %>% distinct(ID, .keep_all = TRUE)
+# check <- check[, -(11:12)]
+df5 <- catch_trends
+
+discardsC <- plot
+# discardsC <- plot_discard_current(catch_trends, year,position_letter = "c)", cap_year , cap_month , caption = TRUE )
 
 #Need to change order?
-dat <- plot_discard_current(catch_trends, year, cap_year, cap_month , return_data = TRUE)
-write.taf(dat, file =file_name(cap_year,ecoreg_code,"SAG_Discards_current", ext = "csv"),dir = "report" )
+# dat <- plot_discard_current(df5, year, cap_year, cap_month , return_data = TRUE)
+write.taf(df5, file =file_name(cap_year,ecoreg_code,"SAG_Discards_current", ext = "csv"),dir = "report" )
 
 cowplot::plot_grid(discardsA, discardsB, discardsC, align = "h",nrow = 1, rel_widths = 1, rel_heights = 1)
-ggplot2::ggsave(file_name(cap_year,ecoreg_code,"SAG_Discards", ext = "png"),path = "report/", width = 220.32, height = 88.9, units = "mm", dpi = 300)
+ggplot2::ggsave(file_name(cap_year,ecoreg_code,"SAG_Discards", ext = "png"),width = 220.32, height = 88.9, units = "mm", dpi = 300)
 
 
 #~~~~~~~~~~~~~~~#

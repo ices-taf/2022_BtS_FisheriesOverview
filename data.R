@@ -24,7 +24,7 @@ prelim <- read.taf("bootstrap/data/ICES_nominal_catches/ICES_preliminary_catches
 
 catch_dat <-
   format_catches(2022, "Baltic Sea",
-    hist, official, prelim, species_list, sid)
+    hist, official, NULL, species_list, sid)
 
 write.taf(catch_dat, dir = "data", quote = TRUE)
 
@@ -105,6 +105,7 @@ sag_status_BtS <- read.taf("SAG_status_BtS.csv")
 sid <- read.taf("SD_2022.csv")
 
 clean_sag <- format_sag(sag_complete, sid)
+# clean_sag2 <- format_sag(sag_complete2, sid2)
 clean_status <- icesFO::format_sag_status(status, 2022, "Baltic Sea")
 
 unique(clean_sag$StockKeyLabel)

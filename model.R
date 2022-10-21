@@ -20,6 +20,7 @@ write.taf(guild, dir = "model")
 #B.Trends and current catches, landings and discards
 
 catch_trends <- CLD_trends(clean_sag)
+catch_trends2 <- CLD_trends(clean_sag2)
 
 #HERE:
 catch_current <- stockstatus_CLD_current(clean_sag)
