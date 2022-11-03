@@ -79,29 +79,29 @@ guild <- read.taf("model/guild.csv")
 # For this EO, they need separate plots with all info
 
 guild2 <- guild %>% filter(Metric == "F_FMSY")
-plot_guild_trends(guild, cap_year = 2021, cap_month = "November",return_data = FALSE )
+plot_guild_trends(guild, cap_year = 2022, cap_month = "November",return_data = FALSE )
 ggplot2::ggsave("2019_BtS_EO_GuildTrends.png", path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
 guild2 <- guild2 %>% filter(FisheriesGuild != "MEAN")
 guild2 <- guild2 %>% filter(Year> 1975)
-plot_guild_trends(guild2, cap_year = 2021, cap_month = "November",return_data = FALSE )
-ggplot2::ggsave("2021_BtS_EO_GuildTrends_noMEAN_F.png", path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
+plot_guild_trends(guild2, cap_year = 2022, cap_month = "November",return_data = FALSE )
+ggplot2::ggsave("2022_BtS_EO_GuildTrends_F.png", path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
 
 guild2 <- guild %>% filter(Metric == "SSB_MSYBtrigger")
 guild3 <- guild2 %>% dplyr::filter(FisheriesGuild != "MEAN")
 guild3 <- guild3 %>% filter(Year> 1976)
-plot_guild_trends(guild3, cap_year = 2021, cap_month = "November",return_data = FALSE )
-ggplot2::ggsave("2021_BtS_EO_GuildTrends_short_noMEAN_SSB.png", path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
+plot_guild_trends(guild3, cap_year = 2022, cap_month = "November",return_data = FALSE )
+ggplot2::ggsave("2022_BtS_EO_GuildTrends_SSB.png", path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
 
 
-dat <- plot_guild_trends(guild, cap_year = 2021, cap_month = "November",return_data = TRUE)
-write.taf(dat, file ="2021_BtS_EO_GuildTrends.csv", dir = "report", quote = TRUE)
+dat <- plot_guild_trends(guild, cap_year = 2022, cap_month = "November",return_data = TRUE)
+write.taf(dat, file ="2022_BtS_EO_GuildTrends.csv", dir = "report", quote = TRUE)
 
 dat <- trends[,1:2]
 dat <- unique(dat)
 dat <- dat %>% filter(StockKeyLabel != "MEAN")
 dat2 <- sid %>% select(c(StockKeyLabel, StockKeyDescription))
 dat <- left_join(dat,dat2)
-write.taf(dat, file ="2021_BtS_EO_SpeciesGuild_list.csv", dir = "report", quote = TRUE)
+write.taf(dat, file ="2022_BtS_EO_SpeciesGuild_list.csv", dir = "report", quote = TRUE)
 
 #~~~~~~~~~~~~~~~#
 # B.Current catches
